@@ -1,5 +1,5 @@
 body{
-    font-family: Apple Chancery, cursive;
+    font-family: Trebuchet MS, sans-serif;
 }
 
 .heading {
@@ -53,5 +53,10 @@ div.content{
 }
 
 .card_image{
-    padding: 50px;;
+    padding: 50px;
+    justify-content: center;
+}
+
+.card_info{
+    
 }

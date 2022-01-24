@@ -21,7 +21,7 @@ const createCard = (beerData) => {
     const newCard = document.createElement('div')
     newCard.setAttribute('class', 'card')
     console.log(beerData)
-    
+
     //add beer image to separate div within the card
     const imgDiv = document.createElement('div')
     imgDiv.setAttribute('class', 'card_image')
@@ -31,10 +31,13 @@ const createCard = (beerData) => {
     imgDiv.appendChild(img)
     newCard.appendChild(imgDiv)
    
+    //create div to hold other info in card
+    const infoDiv = document.createElement('div')
+    infoDiv.setAttribute=('class', 'card_info')
     //add the name
     const name = document.createElement('p')
     name.innerText = beerData.name
-    newCard.appendChild(name)
+    infoDiv.appendChild(name)
     
     //add the price
     const price = document.createElement('span')
@@ -44,7 +47,9 @@ const createCard = (beerData) => {
     //add the rating
     const rating = document.createElement('p')
     rating.innerText = `${beerData.rating.average.toFixed(2)} / 5`
-    newCard.appendChild(rating)
+    infoDiv.appendChild(rating)
+
+    newCard.appendChild(infoDiv)
     //add card to main div
     main.appendChild(newCard)
 }
