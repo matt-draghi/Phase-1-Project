@@ -6,10 +6,10 @@
 
 .sidebar{
     height: 100%;
-    width: 350px;
+    width: 250px;
     position: fixed;
     z-index: 1;
-    top: 0;
+    /* top:  */
     left: 0;
     border-right-style: groove;
     display: flex;
@@ -20,8 +20,9 @@
     height: 100%;
     display: flex;
     margin-left: 350px;
+    overflow: hidden;
 }
 
 .card{
-
+    /* margin: 15%; */
 }
