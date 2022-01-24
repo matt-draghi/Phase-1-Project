@@ -75,8 +75,10 @@ const renderRating = (beer, newCard) => {
 }
 
 const renderLike = (newCard) => {
-    const likeBttn = document.createElement('i')
-    likeBttn.setAttribute('class', 'far fa-heart')
+    const likeBttn = document.createElement('button') 
+    likeBttn.innerHTML = `
+        <i class="far fa-heart"> Like </i>
+    `
     newCard.appendChild(likeBttn)
 }
 

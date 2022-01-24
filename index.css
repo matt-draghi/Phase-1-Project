@@ -69,3 +69,8 @@ div.content{
     margin-top: 20px;
     margin-right: 5px;
 }
+
+button{
+    font-size: 0.75em;
+    margin: 2px
+}
