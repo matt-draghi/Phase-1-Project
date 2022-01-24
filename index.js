@@ -1,5 +1,5 @@
 const baseURL = 'https://api.sampleapis.com/beers/ale/';
-const main = document.querySelector('div.main')
+const main = document.querySelector('div.main-grid')
 
 const fetchAles = () =>{
     for(let id = 3; id < 7; id ++){
