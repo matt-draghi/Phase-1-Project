@@ -2,13 +2,6 @@ const baseURL = 'https://api.sampleapis.com/beers/ale/';
 const main = document.querySelector('div.main-flexbox')
 
 const fetchAles = () =>{
-    // for(let id = 3; id < 7; id ++){
-    //     fetch(`${baseURL}${id}`)
-    //     .then(resp => resp.json())
-    //     .then(beerData => {
-    //         createCard(beerData)
-    //     })
-    // }
     fetch(baseURL)
     .then(resp => resp.json())
     .then(beerData => {
@@ -20,6 +13,7 @@ const createCard = (beer) => {
     //create card for beer
     const newCard = document.createElement('div')
     newCard.setAttribute('class', 'card')
+    //newCard.setAttribute()
     console.log(beer)
 
     renderImage(beer, newCard)
@@ -67,6 +61,7 @@ const renderInfo = (beer, newCard) => {
 const renderRating = (beer, newCard) => {
     const ratingDiv = document.createElement('div')
     const rating = document.createElement('p')
+    rating.setAttribute(`id`, `${beer.id} Rating`)
     rating.innerText = `${beer.rating.average.toFixed(2)} / 5    (${beer.rating.reviews} reviews)`
     ratingDiv.appendChild(rating)
 
@@ -115,7 +110,6 @@ const renderButtons = (beer, newCard) => {
             reviewForm.setAttribute(`class`, `modal`)
             //create modal content
             const reviewFormContent = document.createElement(`div`)
-    ////////////////ADD ALL CONTENT TO REVIEW FORM CONTENT//////////
             reviewFormContent.setAttribute(`class`, `modal-content`)
             reviewForm.appendChild(reviewFormContent)
             
@@ -164,21 +158,17 @@ const renderButtons = (beer, newCard) => {
                 //TODO: adjust rating and review count based on new review
                 const userRating = form.querySelector("input[type='radio'][name='rating']:checked").value;
                 const totalRating = (beer.rating.average * beer.rating.reviews) + userRating
-                console.log(totalRating, 'total rating')
-                console.log(beer.rating.reviews, 'before')
                 beer.rating.reviews += 1
                 newAverage = totalRating / beer.rating.reviews
-                console.log(beer.rating.reviews, 'beer reviews')
-                console.log(newAverage)
 
-                
+                const rating = document.getElementById(`${beer.id} Rating`)
+                rating.innerText = `${beer.rating.average.toFixed(2)} / 5    (${beer.rating.reviews} reviews)`
+                reviewForm.style.display = "none"
             })
 
             const submitBttn = document.createElement('button')
             submitBttn.innerText = 'Submit'
             form.appendChild(submitBttn)
-
-    /////////////////////////////////////////////////////////////////
 
             //close modal on window click
             window.addEventListener('click', (e) => {

@@ -19,22 +19,22 @@ div.content{
     margin-left: 5%;
 }
 
-.sidebar{
+/* .sidebar{
     height: 100%;
     width: 250px;
     position:absolute;
     left: 0;
     top: 109px;
     display: flex;
-}
+} */
 
-.sidebar-text{
+/* .sidebar-text{
     text-align: center;
-}
+} */
 
 .main-flexbox{
-    margin-top: 125px;
-    margin-left: 300px;
+    margin: 125px;
+    /* margin-left: 300px; */
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
