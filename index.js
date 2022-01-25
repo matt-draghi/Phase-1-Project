@@ -95,7 +95,6 @@ const renderButtons = (beer, newCard) => {
         }
     })
 
-
     //create review button
     const reviewBttn = document.createElement(`button`)
     div.appendChild(reviewBttn)
@@ -137,6 +136,7 @@ const renderButtons = (beer, newCard) => {
             const form = document.createElement('form')
             reviewFormContent.appendChild(form)
 
+            // radio buttons
             for(let reviewOption = 0; reviewOption < 6; reviewOption++){
                 const option = document.createElement(`input`)
                 const label = document.createElement(`label`)
@@ -144,7 +144,9 @@ const renderButtons = (beer, newCard) => {
                 option.setAttribute(`id`, `${reviewOption}`)
                 option.setAttribute(`name`, `rating`)
                 option.setAttribute(`value`, `${reviewOption}`)
-                
+                if(reviewOption === 0){
+                    option.required = true
+                }
                 label.setAttribute(`For`, `${reviewOption}`)
                 label.innerText = `${reviewOption}`
                 
@@ -152,7 +154,32 @@ const renderButtons = (beer, newCard) => {
                 form.appendChild(label)
             }
 
-            
+            // form input
+            const formInput = document.createElement('input')
+            formInput.setAttribute(`placeholder`, 'Additional comments...')
+            form.appendChild(formInput)
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault()
+                //TODO: adjust rating and review count based on new review
+                const userRating = form.querySelector("input[type='radio'][name='rating']:checked").value;
+                const totalRating = (beer.rating.average * beer.rating.reviews) + userRating
+                console.log(totalRating, 'total rating')
+                console.log(beer.rating.reviews, 'before')
+                beer.rating.reviews += 1
+                newAverage = totalRating / beer.rating.reviews
+                console.log(beer.rating.reviews, 'beer reviews')
+                console.log(newAverage)
+
+                
+            })
+
+            const submitBttn = document.createElement('button')
+            submitBttn.innerText = 'Submit'
+            form.appendChild(submitBttn)
+
+    /////////////////////////////////////////////////////////////////
+
             //close modal on window click
             window.addEventListener('click', (e) => {
                 if(e.target === reviewForm){
@@ -160,9 +187,7 @@ const renderButtons = (beer, newCard) => {
                 }
             })
 
-    /////////////////////////////////////////////////////////////////
             main.appendChild(reviewForm)
-
             reviewForm.style.display = "block"
         }
     })
@@ -170,21 +195,6 @@ const renderButtons = (beer, newCard) => {
     //append div to card
     newCard.appendChild(div)
 }
-
-
-
-// const handleLike = () =>{
-//     let likeState = document.querySelector(`card_button button#like`)
-//     if(likeState === "far fa-heart"){
-//         likeBttn.querySelector(`i`).setAttribute('class', 'fas fa-heart')
-//     }
-//     else if (likeState === "fas fa-heart"){
-//         likeBttn.querySelector(`i`).setAttribute('class', 'far fa-heart')
-//     }
-// }
-
-
-
 
 //Invoke Functions
 const init = () =>{

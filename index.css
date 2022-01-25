@@ -121,3 +121,14 @@ button{
 div h1{
 
 }
+
+/* Modal form */
+form {
+    width: 75%;
+    height: 75%;
+    box-sizing: border-box;
+    /* display: flex; */
+
+}
+
+
