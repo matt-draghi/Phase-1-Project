@@ -11,6 +11,7 @@ body{
     top: 0;
     width: 100%;
     border: 2px groove;
+    font-family: 'Bungee Shade', cursive;
 }
 
 div.content{
