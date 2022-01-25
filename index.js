@@ -92,6 +92,8 @@ const renderButtons = (newCard) => {
         else if (likeState === "fas fa-heart"){
             likeBttn.querySelector(`i`).setAttribute('class', 'far fa-heart')
         }
+
+        //add favorites to a list on the side???
     })
 
 
