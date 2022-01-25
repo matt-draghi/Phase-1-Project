@@ -26,7 +26,7 @@ const createCard = (beer) => {
     renderInfo(beer, newCard)
     renderRating(beer, newCard)
 
-    renderButtons(newCard)
+    renderButtons(beer, newCard)
 
     //add card to main div
     main.appendChild(newCard)
@@ -73,13 +73,14 @@ const renderRating = (beer, newCard) => {
     newCard.appendChild(ratingDiv)
 }
 
-const renderButtons = (newCard) => {
+const renderButtons = (beer, newCard) => {
     const div = document.createElement('div')
     div.setAttribute('class','card_button')
 
     //create like Button
     const likeBttn = document.createElement('button') 
     div.appendChild(likeBttn)
+    likeBttn.setAttribute('id', 'like')
     likeBttn.innerHTML = `
         <i class="far fa-heart"> Like </i>
     `
@@ -92,8 +93,6 @@ const renderButtons = (newCard) => {
         else if (likeState === "fas fa-heart"){
             likeBttn.querySelector(`i`).setAttribute('class', 'far fa-heart')
         }
-
-        //add favorites to a list on the side???
     })
 
 
@@ -104,10 +103,87 @@ const renderButtons = (newCard) => {
         <i class="far fa-star">Review</i>
     `
     reviewBttn.setAttribute(`id`, `review`)
+    
+    //add event listener
+    reviewBttn.addEventListener('click', () => {
+        if(document.querySelector(`div[id="${beer.name}"]`)){
+            alert('You have already reviewed this beer.')
+        }
+        else{
+            //create modal container
+            const reviewForm = document.createElement('div')
+            reviewForm.setAttribute(`id`, `${beer.name}`)
+            reviewForm.setAttribute(`class`, `modal`)
+            //create modal content
+            const reviewFormContent = document.createElement(`div`)
+    ////////////////ADD ALL CONTENT TO REVIEW FORM CONTENT//////////
+            reviewFormContent.setAttribute(`class`, `modal-content`)
+            reviewForm.appendChild(reviewFormContent)
+            
+             //create button to close modal
+            const closeReviewForm = document.createElement(`span`)
+            closeReviewForm.setAttribute(`class`, `close`)
+            closeReviewForm.innerHTML = `&times;`
+            reviewFormContent.appendChild(closeReviewForm)
+            closeReviewForm.addEventListener('click', () => {
+                reviewForm.style.display = "none"
+            })
 
+            //add form to modal
+            const formHeader = document.createElement('h1')
+            formHeader.innerText = `Please leave your review of ${beer.name}:`
+            reviewFormContent.appendChild(formHeader)
+
+            const form = document.createElement('form')
+            reviewFormContent.appendChild(form)
+
+            for(let reviewOption = 0; reviewOption < 6; reviewOption++){
+                const option = document.createElement(`input`)
+                const label = document.createElement(`label`)
+                option.setAttribute(`type`, `radio`)
+                option.setAttribute(`id`, `${reviewOption}`)
+                option.setAttribute(`name`, `rating`)
+                option.setAttribute(`value`, `${reviewOption}`)
+                
+                label.setAttribute(`For`, `${reviewOption}`)
+                label.innerText = `${reviewOption}`
+                
+                form.appendChild(option)
+                form.appendChild(label)
+            }
+
+            
+            //close modal on window click
+            window.addEventListener('click', (e) => {
+                if(e.target === reviewForm){
+                    reviewForm.style.display = "none"
+                }
+            })
+
+    /////////////////////////////////////////////////////////////////
+            main.appendChild(reviewForm)
+
+            reviewForm.style.display = "block"
+        }
+    })
+    
     //append div to card
     newCard.appendChild(div)
 }
+
+
+
+// const handleLike = () =>{
+//     let likeState = document.querySelector(`card_button button#like`)
+//     if(likeState === "far fa-heart"){
+//         likeBttn.querySelector(`i`).setAttribute('class', 'fas fa-heart')
+//     }
+//     else if (likeState === "fas fa-heart"){
+//         likeBttn.querySelector(`i`).setAttribute('class', 'far fa-heart')
+//     }
+// }
+
+
 
 
 //Invoke Functions
