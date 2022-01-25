@@ -1,6 +1,6 @@
 const baseURL = 'https://api.sampleapis.com/beers/ale/';
 const main = document.querySelector('div.main-flexbox')
-
+//OPTIONAL TODO: Search bar in header that fetches for id based on name 
 const fetchAles = () =>{
     fetch(baseURL)
     .then(resp => resp.json())
@@ -155,7 +155,6 @@ const renderButtons = (beer, newCard) => {
 
             form.addEventListener('submit', (e) => {
                 e.preventDefault()
-                //TODO: adjust rating and review count based on new review
                 const userRating = form.querySelector("input[type='radio'][name='rating']:checked").value;
                 const totalRating = (beer.rating.average * beer.rating.reviews) + userRating
                 beer.rating.reviews += 1
@@ -163,7 +162,11 @@ const renderButtons = (beer, newCard) => {
 
                 const rating = document.getElementById(`${beer.id} Rating`)
                 rating.innerText = `${beer.rating.average.toFixed(2)} / 5    (${beer.rating.reviews} reviews)`
+                
+                /*TODO: make it so another modal opens on submit 
+                with confirmation of submit, followed by close - setTimeout will work*/
                 reviewForm.style.display = "none"
+
             })
 
             const submitBttn = document.createElement('button')

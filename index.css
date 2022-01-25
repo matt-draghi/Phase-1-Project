@@ -118,10 +118,6 @@ button{
     cursor: pointer;
 }
 
-div h1{
-
-}
-
 /* Modal form */
 form {
     width: 75%;
@@ -131,4 +127,4 @@ form {
 
 }
 
-
+/* TODO: Style modal contents */
