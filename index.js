@@ -25,12 +25,11 @@ const createCard = (beer) => {
     renderImage(beer, newCard)
     renderInfo(beer, newCard)
     renderRating(beer, newCard)
-    renderLike(newCard)   
+
+    renderButtons(newCard)
 
     //add card to main div
     main.appendChild(newCard)
-    console.log(typeof(newCard))
-    console.log(newCard)
 }
 
 const renderImage = (beer, newCard) =>{
@@ -74,13 +73,42 @@ const renderRating = (beer, newCard) => {
     newCard.appendChild(ratingDiv)
 }
 
-const renderLike = (newCard) => {
+const renderButtons = (newCard) => {
+    const div = document.createElement('div')
+    div.setAttribute('class','card_button')
+
+    //create like Button
     const likeBttn = document.createElement('button') 
+    div.appendChild(likeBttn)
     likeBttn.innerHTML = `
         <i class="far fa-heart"> Like </i>
     `
-    newCard.appendChild(likeBttn)
+    likeBttn.addEventListener('click', () =>{
+        let likeState = likeBttn.querySelector(`i`).attributes.class.value
+        //console.log(likeState)
+        if(likeState === "far fa-heart"){
+            likeBttn.querySelector(`i`).setAttribute('class', 'fas fa-heart')
+        }
+        else if (likeState === "fas fa-heart"){
+            likeBttn.querySelector(`i`).setAttribute('class', 'far fa-heart')
+        }
+
+        //add favorites to a list on the side???
+    })
+
+
+    //create review button
+    const reviewBttn = document.createElement(`button`)
+    div.appendChild(reviewBttn)
+    reviewBttn.innerHTML = `
+        <i class="far fa-star">Review</i>
+    `
+    reviewBttn.setAttribute(`id`, `review`)
+
+    //append div to card
+    newCard.appendChild(div)
 }
+
 
 //Invoke Functions
 const init = () =>{
