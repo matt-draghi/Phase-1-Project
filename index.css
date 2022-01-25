@@ -4,14 +4,12 @@ body{
 
 .heading {
     background-color: #e2b110e3;
-    /* margin-bottom: ; */
     padding: 5px 0px 5px 15px;
     position: fixed;
     left: 0;
     top: 0;
     width: 100%;
     border: 2px groove;
-    z-index: 1;
 }
 
 div.content{
@@ -72,5 +70,11 @@ div.content{
 
 button{
     font-size: 0.75em;
-    margin: 2px
+    margin: 2px;
+    width: 100px;
+}
+
+.card_button{
+    display: flex;
+    justify-content: space-between;
 }

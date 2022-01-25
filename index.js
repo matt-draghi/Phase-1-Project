@@ -25,12 +25,12 @@ const createCard = (beer) => {
     renderImage(beer, newCard)
     renderInfo(beer, newCard)
     renderRating(beer, newCard)
-    renderLike(newCard)   
+
+    renderButtons(newCard)
+    // renderReview(newCard)   
 
     //add card to main div
     main.appendChild(newCard)
-    console.log(typeof(newCard))
-    console.log(newCard)
 }
 
 const renderImage = (beer, newCard) =>{
@@ -74,13 +74,31 @@ const renderRating = (beer, newCard) => {
     newCard.appendChild(ratingDiv)
 }
 
-const renderLike = (newCard) => {
+const renderButtons = (newCard) => {
+    const div = document.createElement('div')
+    div.setAttribute('class','card_button')
+
+    //create like Button
     const likeBttn = document.createElement('button') 
+    div.appendChild(likeBttn)
     likeBttn.innerHTML = `
         <i class="far fa-heart"> Like </i>
     `
-    newCard.appendChild(likeBttn)
+    likeBttn.setAttribute('id', 'favorite')
+
+
+    //create review button
+    const reviewBttn = document.createElement(`button`)
+    div.appendChild(reviewBttn)
+    reviewBttn.innerHTML = `
+        <i class="far fa-star">Review</i>
+    `
+    reviewBttn.setAttribute(`id`, `favorite`)
+
+    //append div to card
+    newCard.appendChild(div)
 }
+
 
 //Invoke Functions
 const init = () =>{
