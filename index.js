@@ -67,7 +67,7 @@ const renderInfo = (beer, newCard) => {
 const renderRating = (beer, newCard) => {
     const ratingDiv = document.createElement('div')
     const rating = document.createElement('p')
-    rating.innerText = `${beer.rating.average.toFixed(2)} / 5`
+    rating.innerText = `${beer.rating.average.toFixed(2)} / 5    (${beer.rating.reviews} reviews)`
     ratingDiv.appendChild(rating)
 
     newCard.appendChild(ratingDiv)
