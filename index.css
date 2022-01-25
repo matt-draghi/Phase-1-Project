@@ -2,6 +2,7 @@ body{
     font-family: Trebuchet MS, sans-serif;
 }
 
+/* need to fix the translucent heading issue */
 .heading {
     background-color: #e2b110e3;
     padding: 5px 0px 5px 15px;

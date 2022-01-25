@@ -27,7 +27,6 @@ const createCard = (beer) => {
     renderRating(beer, newCard)
 
     renderButtons(newCard)
-    // renderReview(newCard)   
 
     //add card to main div
     main.appendChild(newCard)
@@ -84,7 +83,16 @@ const renderButtons = (newCard) => {
     likeBttn.innerHTML = `
         <i class="far fa-heart"> Like </i>
     `
-    likeBttn.setAttribute('id', 'favorite')
+    likeBttn.addEventListener('click', () =>{
+        let likeState = likeBttn.querySelector(`i`).attributes.class.value
+        //console.log(likeState)
+        if(likeState === "far fa-heart"){
+            likeBttn.querySelector(`i`).setAttribute('class', 'fas fa-heart')
+        }
+        else if (likeState === "fas fa-heart"){
+            likeBttn.querySelector(`i`).setAttribute('class', 'far fa-heart')
+        }
+    })
 
 
     //create review button
@@ -93,7 +101,7 @@ const renderButtons = (newCard) => {
     reviewBttn.innerHTML = `
         <i class="far fa-star">Review</i>
     `
-    reviewBttn.setAttribute(`id`, `favorite`)
+    reviewBttn.setAttribute(`id`, `review`)
 
     //append div to card
     newCard.appendChild(div)
