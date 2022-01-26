@@ -97,10 +97,19 @@ button{
 .modal-content{
     background-color: #fefefe;
     margin: 15% auto;
-    padding: 20px;
+    padding: 10px;
     border: 1px solid #888;
     width: 80%;
-    height: 40%
+    height: 40%;
+    justify-content: center;
+}
+
+/* TODO: Style modal contents */
+
+button {
+    font-size: 22px;
+    height: 50px;
+    width: 100px;
 }
 
 /* The Close Button */
@@ -118,13 +127,10 @@ button{
     cursor: pointer;
 }
 
-/* Modal form */
-form {
-    width: 75%;
-    height: 75%;
-    box-sizing: border-box;
-    /* display: flex; */
-
+.footer {
+    padding: 10px 0px 80px 0px;
+    background-color: #e2b110e3;
+    display: block;
+    width: 100%;
+    border: 2px groove;
 }
-
-/* TODO: Style modal contents */
