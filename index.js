@@ -130,6 +130,10 @@ const renderButtons = (beer, newCard) => {
             const form = document.createElement('form')
             reviewFormContent.appendChild(form)
 
+            //temp
+            const radioDiv = document.createElement('div')
+            reviewFormContent.appendChild(radioDiv)
+
             // radio buttons
             for(let reviewOption = 0; reviewOption < 6; reviewOption++){
                 const option = document.createElement(`input`)
@@ -144,8 +148,11 @@ const renderButtons = (beer, newCard) => {
                 label.setAttribute(`For`, `${reviewOption}`)
                 label.innerText = `${reviewOption}`
                 
-                form.appendChild(option)
-                form.appendChild(label)
+                reviewFormContent.appendChild(option)
+                reviewFormContent.appendChild(label)
+                // temporarily commented out
+                // form.appendChild(option)
+                // form.appendChild(label)
             }
             
             // form input
@@ -162,7 +169,7 @@ const renderButtons = (beer, newCard) => {
 
             form.addEventListener('submit', (e) => {
                 e.preventDefault()
-                const userRating = form.querySelector("input[type='radio'][name='rating']:checked").value;
+                const userRating = document.querySelector("input[type='radio'][name='rating']:checked").value;
                 const totalRating = (beer.rating.average * beer.rating.reviews) + userRating
                 beer.rating.reviews += 1
                 newAverage = totalRating / beer.rating.reviews
