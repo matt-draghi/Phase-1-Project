@@ -176,11 +176,7 @@ const renderButtons = (beer, newCard) => {
             })
 
             const submitBttn = document.createElement('button')
-            submitBttn.innerText = 'Submit'
-            // submitBttn.style.fontSize = '22px'
-            // submitBttn.style.height = '50px'
-            // submitBttn.style.width = '100px'
-            
+            submitBttn.innerText = 'Submit'         
             form.appendChild(submitBttn)
 
             //close modal on window click
