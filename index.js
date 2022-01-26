@@ -1,4 +1,4 @@
-const baseURL = 'http://localhost:3000/ale';
+const baseURL = 'http://localhost:3000/ale/';
 const main = document.querySelector('div.main-flexbox')
 //OPTIONAL TODO: Search bar in header that fetches for id based on name 
 const fetchAles = () =>{
