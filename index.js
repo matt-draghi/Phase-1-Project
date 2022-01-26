@@ -127,16 +127,11 @@ const renderButtons = (beer, newCard) => {
             formHeader.innerText = `Please leave your review of ${beer.name}:`
             reviewFormContent.appendChild(formHeader)
 
-            //create a new div to group the radio buttons
+            //create radioDiv to group the radios
             const radioDiv = document.createElement('div')
             radioDiv.setAttribute(`class`, 'radioDiv')
 
-            // create the form
-            const form = document.createElement('form')
-            form.appendChild(radioDiv)
-            reviewFormContent.appendChild(form)
-
-            // radio buttons
+             // radio buttons
             for(let reviewOption = 0; reviewOption < 6; reviewOption++){
                 const option = document.createElement(`input`)
                 const label = document.createElement(`label`)
@@ -150,17 +145,23 @@ const renderButtons = (beer, newCard) => {
                 label.setAttribute(`For`, `${reviewOption}`)
                 label.innerText = `${reviewOption}`
                 
+                //radios appended to radioDiv
                 radioDiv.appendChild(option)
                 radioDiv.appendChild(label)
             }
+
+            // create the form; radioDiv appends to form; from appends to reviewFormContent (modal)
+            const form = document.createElement('form')
+            form.appendChild(radioDiv)
+            reviewFormContent.appendChild(form)
             
-            // form input
+            // create form input
             const formInput = document.createElement('input')
             formInput.setAttribute(`class`, 'text-input')
             formInput.setAttribute(`placeholder`, 'Additional comments...')
             form.appendChild(formInput)
 
-            //creat submit listener
+            // create submit listener
             form.addEventListener('submit', (e) => {
                 e.preventDefault()
                 const userRating = document.querySelector(".radioDiv input[type='radio'][name='rating']:checked").value;
@@ -193,7 +194,7 @@ const renderButtons = (beer, newCard) => {
         }
     })
     
-    //append div to card
+    //append new div to card
     newCard.appendChild(div)
 }
 
