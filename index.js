@@ -106,7 +106,6 @@ const renderButtons = (beer, newCard) => {
         else{
             //create modal container
             const reviewForm = document.createElement('div')
-            reviewForm.setAttribute(`id`, `${beer.name}`)
             reviewForm.setAttribute(`class`, `modal`)
             //create modal content
             const reviewFormContent = document.createElement(`div`)
@@ -169,7 +168,7 @@ const renderButtons = (beer, newCard) => {
 
                 const rating = document.getElementById(`${beer.id} Rating`)
                 rating.innerText = `${beer.rating.average.toFixed(2)} / 5    (${beer.rating.reviews} reviews)`
-
+                reviewForm.setAttribute(`id`, `${beer.name}`)
                 /*TODO: make it so another modal opens on submit 
                 with confirmation of submit, followed by close - setTimeout will work*/
                 reviewForm.style.display = "none"
