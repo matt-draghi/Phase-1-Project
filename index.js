@@ -114,7 +114,7 @@ const renderButtons = (beer, newCard) => {
             reviewForm.appendChild(reviewFormContent)
             
              //create button to close modal
-            const closeReviewForm = document.createElement(`span`)
+            const closeReviewForm = document.createElement(`div`)
             closeReviewForm.setAttribute(`class`, `close`)
             closeReviewForm.innerHTML = `&times;`
             reviewFormContent.appendChild(closeReviewForm)
@@ -122,17 +122,19 @@ const renderButtons = (beer, newCard) => {
                 reviewForm.style.display = "none"
             })
 
-            //add form to modal
+            //add h1 form header to modal
             const formHeader = document.createElement('h1')
             formHeader.innerText = `Please leave your review of ${beer.name}:`
             reviewFormContent.appendChild(formHeader)
 
-            const form = document.createElement('form')
-            reviewFormContent.appendChild(form)
-
-            //temp
+            //create a new div to group the radio buttons
             const radioDiv = document.createElement('div')
-            reviewFormContent.appendChild(radioDiv)
+            radioDiv.setAttribute(`class`, 'radioDiv')
+
+            // create the form
+            const form = document.createElement('form')
+            form.appendChild(radioDiv)
+            reviewFormContent.appendChild(form)
 
             // radio buttons
             for(let reviewOption = 0; reviewOption < 6; reviewOption++){
@@ -148,28 +150,20 @@ const renderButtons = (beer, newCard) => {
                 label.setAttribute(`For`, `${reviewOption}`)
                 label.innerText = `${reviewOption}`
                 
-                reviewFormContent.appendChild(option)
-                reviewFormContent.appendChild(label)
-                // temporarily commented out
-                // form.appendChild(option)
-                // form.appendChild(label)
+                radioDiv.appendChild(option)
+                radioDiv.appendChild(label)
             }
             
             // form input
             const formInput = document.createElement('input')
             formInput.setAttribute(`class`, 'text-input')
             formInput.setAttribute(`placeholder`, 'Additional comments...')
-            // TODO move form input styling to CSS 
-            formInput.position = 'center';
-            formInput.style.height = '200px';
-            formInput.style.width = '300px';
-            formInput.style.fontSize = '22px';
-          
             form.appendChild(formInput)
 
+            //creat submit listener
             form.addEventListener('submit', (e) => {
                 e.preventDefault()
-                const userRating = document.querySelector("input[type='radio'][name='rating']:checked").value;
+                const userRating = document.querySelector(".radioDiv input[type='radio'][name='rating']:checked").value;
                 const totalRating = (beer.rating.average * beer.rating.reviews) + userRating
                 beer.rating.reviews += 1
                 newAverage = totalRating / beer.rating.reviews
@@ -182,6 +176,7 @@ const renderButtons = (beer, newCard) => {
                 reviewForm.style.display = "none"
             })
 
+            //create submit button
             const submitBttn = document.createElement('button')
             submitBttn.innerText = 'Submit'         
             form.appendChild(submitBttn)
