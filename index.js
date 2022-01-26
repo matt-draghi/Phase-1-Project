@@ -147,10 +147,17 @@ const renderButtons = (beer, newCard) => {
                 form.appendChild(option)
                 form.appendChild(label)
             }
-
+            
             // form input
             const formInput = document.createElement('input')
+            formInput.setAttribute(`class`, 'text-input')
             formInput.setAttribute(`placeholder`, 'Additional comments...')
+            // TODO move form input styling to CSS 
+            formInput.position = 'center';
+            formInput.style.height = '200px';
+            formInput.style.width = '300px';
+            formInput.style.fontSize = '22px';
+          
             form.appendChild(formInput)
 
             form.addEventListener('submit', (e) => {
@@ -162,15 +169,14 @@ const renderButtons = (beer, newCard) => {
 
                 const rating = document.getElementById(`${beer.id} Rating`)
                 rating.innerText = `${beer.rating.average.toFixed(2)} / 5    (${beer.rating.reviews} reviews)`
-                
+
                 /*TODO: make it so another modal opens on submit 
                 with confirmation of submit, followed by close - setTimeout will work*/
                 reviewForm.style.display = "none"
-
             })
 
             const submitBttn = document.createElement('button')
-            submitBttn.innerText = 'Submit'
+            submitBttn.innerText = 'Submit'         
             form.appendChild(submitBttn)
 
             //close modal on window click

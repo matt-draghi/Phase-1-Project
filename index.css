@@ -97,10 +97,62 @@ button{
 .modal-content{
     background-color: #fefefe;
     margin: 15% auto;
-    padding: 20px;
+    padding: 0px;
     border: 1px solid #888;
     width: 80%;
-    height: 40%
+    height: 40%;
+    justify-content: center;
+
+    /* This is the model animation */
+    animation-name: modal-open;
+    animation-duration: 1s;
+}
+
+/* When the modal opens, the opacity starts from 0 to 1 */
+@keyframes modal-open{
+    from{opacity: 0}
+    to {opacity: 1}
+}
+
+.modal-content span{
+    margin-top: 0.5%;
+    margin-right: 1.5%;
+    color: #fff
+}
+
+.modal-content h1{
+    background-color: #e2b110e3;
+    padding: 50px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    width: auto;
+    height: 10%
+}
+
+/* TODO: Style modal contents */
+form {
+    margin: 50px;
+    /* margin-right: 20px; */
+    /* margin-left: 300px; */
+    /* display: flex; */
+    /* flex-wrap: wrap; */
+    /* justify-content: center;
+    align-items: center; */
+
+
+}
+
+input {
+    /* position: 'center'; */
+    padding: 0px 25px 0px 0px;
+    /* margin-left: 20px */
+}
+
+button {
+    font-size: 22px;
+    height: 50px;
+    width: 100px;
 }
 
 /* The Close Button */
@@ -118,13 +170,11 @@ button{
     cursor: pointer;
 }
 
-/* Modal form */
-form {
-    width: 75%;
-    height: 75%;
-    box-sizing: border-box;
-    /* display: flex; */
-
+.footer {
+    padding: 10px 0px 80px 0px;
+    background-color: #e2b110e3;
+    display: block;
+    width: 100%;
+    border: 2px groove;
 }
 
-/* TODO: Style modal contents */
