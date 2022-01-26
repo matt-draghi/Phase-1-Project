@@ -97,14 +97,42 @@ button{
 .modal-content{
     background-color: #fefefe;
     margin: 15% auto;
-    padding: 10px;
+    /* padding: 15px; */
     border: 1px solid #888;
     width: 80%;
     height: 40%;
     justify-content: center;
 }
 
+.modal-content h1{
+    background-color: #e2b110e3;
+    padding: 50px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    width: auto;
+    height: 15%
+
+}
+
 /* TODO: Style modal contents */
+form {
+    margin: 50px;
+    /* margin-right: 20px; */
+    /* margin-left: 300px; */
+    /* display: flex; */
+    /* flex-wrap: wrap; */
+    /* justify-content: center;
+    align-items: center; */
+
+
+}
+
+input {
+    /* position: 'center'; */
+    padding: 0px 25px 0px 0px;
+    /* margin-left: 20px */
+}
 
 button {
     font-size: 22px;
