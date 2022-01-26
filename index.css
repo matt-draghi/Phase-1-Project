@@ -97,11 +97,16 @@ button{
 .modal-content{
     background-color: #fefefe;
     margin: 15% auto;
-    /* padding: 15px; */
+    padding: 0px;
     border: 1px solid #888;
     width: 80%;
     height: 40%;
     justify-content: center;
+}
+
+.modal-content span{
+    margin-top: 0.5%;
+    margin-right: 1.5%
 }
 
 .modal-content h1{
@@ -112,7 +117,6 @@ button{
     margin-top: 0px;
     width: auto;
     height: 15%
-
 }
 
 /* TODO: Style modal contents */
